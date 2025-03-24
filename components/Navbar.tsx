@@ -8,29 +8,29 @@ const Navbar = () => {
   const [isContactOpen, setIsContactOpen] = useState(false)
   const [isServicesOpen, setIsServicesOpen] = useState(false)
 
-  const contactTimerRef = useRef(null)
-  const servicesTimerRef = useRef(null)
+  const contactTimerRef = useRef<number | null>(null)
+  const servicesTimerRef = useRef<number | null>(null)
 
   // Contact Handlers
   const handleContactMouseEnter = () => {
-    if (contactTimerRef.current) clearTimeout(contactTimerRef.current)
+    if (contactTimerRef.current !== null) clearTimeout(contactTimerRef.current)
     setIsContactOpen(true)
   }
 
   const handleContactMouseLeave = () => {
-    contactTimerRef.current = setTimeout(() => {
+    contactTimerRef.current = window.setTimeout(() => {
       setIsContactOpen(false)
     }, 200)
   }
 
   // Services Handlers
   const handleServicesMouseEnter = () => {
-    if (servicesTimerRef.current) clearTimeout(servicesTimerRef.current)
+    if (servicesTimerRef.current !== null) clearTimeout(servicesTimerRef.current)
     setIsServicesOpen(true)
   }
 
   const handleServicesMouseLeave = () => {
-    servicesTimerRef.current = setTimeout(() => {
+    servicesTimerRef.current = window.setTimeout(() => {
       setIsServicesOpen(false)
     }, 200)
   }
@@ -156,7 +156,7 @@ const Navbar = () => {
           <a href="/ourteam" className="block">Our Team</a>
           <a href="/gallery" className="block">Gallery</a>
 
-          {/* Mobile phone */}
+          {/* Mobile Phone */}
           <div className="flex items-center space-x-1 text-red-600 font-semibold pt-2 border-t">
             <Phone className="w-4 h-4" />
             <span>Call Us! 612-868-4879</span>
