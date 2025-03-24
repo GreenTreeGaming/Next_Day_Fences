@@ -1,21 +1,26 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useState } from "react"
 
-const AluminumMain = () => {
+type ImageItem = {
+  src: string
+  alt: string
+}
+
+const AluminumMain: React.FC = () => {
   // Array of images for the fence
-  const images = [
-    { src: '/fence.jpg', alt: 'Aluminum Fence 1' },
-    { src: '/fence2.jpg', alt: 'Aluminum Fence 2' },
-    { src: '/fence2.jpg', alt: 'Aluminum Fence 3' },
-    { src: '/fence2.jpg', alt: 'Aluminum Fence 4' },
+  const images: ImageItem[] = [
+    { src: "/fence.jpg", alt: "Aluminum Fence 1" },
+    { src: "/fence2.jpg", alt: "Aluminum Fence 2" },
+    { src: "/fence2.jpg", alt: "Aluminum Fence 3" },
+    { src: "/fence2.jpg", alt: "Aluminum Fence 4" },
   ]
 
   // State for selected image
-  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [selectedIndex, setSelectedIndex] = useState<number>(0)
 
-  // Handler for clicking a thumbnail
-  const handleThumbnailClick = (index) => {
+  // Handler for clicking a thumbnail (ensuring index is a number)
+  const handleThumbnailClick = (index: number): void => {
     setSelectedIndex(index)
   }
 
@@ -42,13 +47,11 @@ const AluminumMain = () => {
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className={`w-full h-auto rounded shadow border-2
-                    ${
-                      selectedIndex === index
-                        ? 'border-red-600'
-                        : 'border-transparent'
-                    }
-                    hover:border-red-600 transition`}
+                  className={`w-full h-auto rounded shadow border-2 ${
+                    selectedIndex === index
+                      ? "border-red-600"
+                      : "border-transparent"
+                  } hover:border-red-600 transition`}
                 />
               </button>
             ))}

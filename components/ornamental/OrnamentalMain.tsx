@@ -1,21 +1,25 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useState } from "react"
 
-const OrnamentalMain = () => {
-  // Array of images for the fence
-  const images = [
-    { src: '/fence.jpg', alt: 'Ornamental Steel Fence 1' },
-    { src: '/fence2.jpg', alt: 'Ornamental Steel Fence 2' },
-    { src: '/fence2.jpg', alt: 'Ornamental Steel Fence 3' },
-    { src: '/fence2.jpg', alt: 'Ornamental Steel Fence 4' },
-  ]
+type ImageItem = {
+  src: string
+  alt: string
+}
 
-  // State for selected image
-  const [selectedIndex, setSelectedIndex] = useState(0)
+const images: ImageItem[] = [
+  { src: "/fence.jpg", alt: "Ornamental Steel Fence 1" },
+  { src: "/fence2.jpg", alt: "Ornamental Steel Fence 2" },
+  { src: "/fence2.jpg", alt: "Ornamental Steel Fence 3" },
+  { src: "/fence2.jpg", alt: "Ornamental Steel Fence 4" },
+]
+
+const OrnamentalMain: React.FC = () => {
+  // State for selected image (typed as number)
+  const [selectedIndex, setSelectedIndex] = useState<number>(0)
 
   // Handler for clicking a thumbnail
-  const handleThumbnailClick = (index) => {
+  const handleThumbnailClick = (index: number): void => {
     setSelectedIndex(index)
   }
 
@@ -42,13 +46,11 @@ const OrnamentalMain = () => {
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className={`w-full h-auto rounded shadow border-2
-                    ${
-                      selectedIndex === index
-                        ? 'border-red-600'
-                        : 'border-transparent'
-                    }
-                    hover:border-red-600 transition`}
+                  className={`w-full h-auto rounded shadow border-2 ${
+                    selectedIndex === index
+                      ? "border-red-600"
+                      : "border-transparent"
+                  } hover:border-red-600 transition`}
                 />
               </button>
             ))}
@@ -66,8 +68,8 @@ const OrnamentalMain = () => {
             Ornamental steel fences are both strong and stylish, providing a sleek look
             while still offering top-notch stability. Our steel posts are driven deep
             for added support, ensuring your fence stands firm year after year.
-            Next Day Fences' ornamental fencing is the superior strength
-            alternative to aluminum, giving you the peace of mind Minneapolis's harsh
+            Next Day Fences&apos; ornamental fencing is the superior strength
+            alternative to aluminum, giving you the peace of mind Minneapolis&apos;s harsh
             winters demand.
           </p>
 

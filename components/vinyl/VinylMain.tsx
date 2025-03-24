@@ -2,20 +2,24 @@
 
 import React, { useState } from "react"
 
-const VinylMain = () => {
-  // Array of images for the fence
-  const images = [
-    { src: "/fence.jpg", alt: "Vinyl Fence Main" },
-    { src: "/fence2.jpg", alt: "Vinyl Fence Close-up 1" },
-    { src: "/fence.jpg", alt: "Vinyl Fence Close-up 2" },
-    { src: "/fence2.jpg", alt: "Vinyl Fence Close-up 3" },
-  ]
+type ImageItem = {
+  src: string
+  alt: string
+}
 
-  // State for selected image
-  const [selectedIndex, setSelectedIndex] = useState(0)
+const images: ImageItem[] = [
+  { src: "/fence.jpg", alt: "Vinyl Fence Main" },
+  { src: "/fence2.jpg", alt: "Vinyl Fence Close-up 1" },
+  { src: "/fence.jpg", alt: "Vinyl Fence Close-up 2" },
+  { src: "/fence2.jpg", alt: "Vinyl Fence Close-up 3" },
+]
 
-  // Handler for clicking a thumbnail
-  const handleThumbnailClick = (index) => {
+const VinylMain: React.FC = () => {
+  // State for selected image (typed as number)
+  const [selectedIndex, setSelectedIndex] = useState<number>(0)
+
+  // Handler for clicking a thumbnail with index typed as number
+  const handleThumbnailClick = (index: number): void => {
     setSelectedIndex(index)
   }
 
@@ -42,14 +46,11 @@ const VinylMain = () => {
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className={`w-full h-auto rounded shadow border-2
-                    ${
-                      selectedIndex === index
-                        ? "border-red-600"
-                        : "border-transparent"
-                    }
-                    hover:border-red-600 transition
-                  `}
+                  className={`w-full h-auto rounded shadow border-2 ${
+                    selectedIndex === index
+                      ? "border-red-600"
+                      : "border-transparent"
+                  } hover:border-red-600 transition`}
                 />
               </button>
             ))}
