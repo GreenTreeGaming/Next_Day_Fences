@@ -10,7 +10,6 @@ const HeaderOurTeam = () => {
           width="100%"
           height="100%"
           style={{ border: 0 }}
-          allowFullScreen=""
           loading="lazy"
           title="Next Day Fences of Minneapolis"
           className="absolute inset-0"
